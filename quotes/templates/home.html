@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if ticker %}
+	{{ ticker }}
+{% endif %}
+
+{% if api %}
+	{% if api == "Error..." %}
+		There was a problem with your ticker symbol, 
+		please try again...
+	{% else %}
+
+		<h1>{{ api.body.0.shortName }}</h1><br/>
+		Current price: $: {{ api.body.0.regularMarketPrice}}<br/>
+		Mrkt Cap: {{ api.body.0.marketCap}}<br/>
+		Price to Book:{{ api.body.0.priceToBook}}<br/>
+		High: {{ api.body.0.regularMarketDayHigh}}<br/>
+		Book Value: {{ api.body.0.bookValue}}<br/>
+		Dividend: {{ api.body.0.dividendYield}}<br/>
+	{% endif %}
+{% endif %}
+
+
+
+{% endblock %}
+
